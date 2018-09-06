@@ -9,16 +9,30 @@
  *   https://sailsjs.com/anatomy/tasks/config/copy.js
  *
  */
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
   grunt.config.set('copy', {
     dev: {
-      files: [{
-        expand: true,
-        cwd: './assets',
-        src: ['**/*.!(coffee|less)'],
-        dest: '.tmp/public'
-      }]
+      files: [
+        {
+          expand: true,
+          cwd: './assets',
+          src: ['**/*.!(coffee|less)'],
+          dest: '.tmp/public'
+        },
+        {
+          expand: true,
+          cwd: './node_modules/popper.js/dist',
+          src: ['popper.min.js'],
+          dest: 'assets/dependencies/js'
+        },
+        {
+          expand: true,
+          cwd: './node_modules/bootstrap/dist',
+          src: ['css/bootstrap.min.css', 'js/bootstrap.min.js'],
+          dest: 'assets/dependencies'
+        }
+      ]
     },
     build: {
       files: [{
@@ -35,7 +49,7 @@ module.exports = function(grunt) {
         src: ['**/*'],
         dest: '.tmp/public/dist'
       }]
-    },
+    }
   });
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
