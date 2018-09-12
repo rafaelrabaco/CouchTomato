@@ -1,114 +1,164 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <% /* Viewport tag for sensible mobile support */ %>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<head>
-    <title>
-        <%=typeof title == 'undefined' ? 'CouchTomato' : title + ' - CouchTomato' %>
-    </title>
+    <title><%=sails.config.appName%></title>
 
-    <!-- Viewport mobile tag for sensible mobile support -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <% /*
+        Stylesheets
+        ========================
 
+        Stylesheets can be hard-coded as «link» tags, automatically injected
+        by the asset pipeline between "STYLES" and "STYLES END", or both.
+        (https://sailsjs.com/docs/concepts/assets/task-automation)
+    */ %>
+
+    <% /* Auto-injected «link» tags: */ %>
     <!--STYLES-->
-    <link rel="stylesheet" href="/dependencies/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/dependencies/font-awesome-4/css/font-awesome.css">
+    <link rel="stylesheet" href="/styles/less.css">
+    <link rel="stylesheet" href="/styles/scss.css">
     <!--STYLES END-->
-</head>
+  </head>
 
-<body>
-    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">CouchTomato</a>
-        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-        <ul class="navbar-nav px-3">
-            <li class="nav-item text-nowrap">
-                <a class="nav-link" href="#">Sign out</a>
+  <body class="app sidebar-mini rtl">
+        <!-- NAVBAR -->
+        <header class="app-header"><a class="app-header__logo" href="index.html"><b>Couch</b>Tomato</a>
+          <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
+          <!-- Navbar Right Menu-->
+          <ul class="app-nav">
+            <li class="app-search" style="display:none;">
+              <input class="app-search__input" type="search" placeholder="Search">
+              <button class="app-search__button"><i class="fa fa-search"></i></button>
             </li>
-        </ul>
-    </nav>
-
-    <div class="container-fluid">
-        <div class="row">
-            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-                <div class="sidebar-sticky">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="/">
-                                <span data-feather="home"></span>
-                                Dashboard <span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file"></span>
-                                Movies
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="shopping-cart"></span>
-                                Series
-                            </a>
-                        </li>
-                    </ul>
-
-                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                        <span>Settings</span>
-                        <a class="d-flex align-items-center text-muted" href="#">
-                            <span data-feather="plus-circle"></span>
-                        </a>
-                    </h6>
-                    <ul class="nav flex-column mb-2">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/general">
-                                <span data-feather="file-text"></span>
-                                General
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                Media
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                Profiles
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                Quality
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                Indexers
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                Download Clients
-                            </a>
-                        </li>
-                    </ul>
+            <!--Notification Menu-->
+            <li class="dropdown" style="display:none;">
+              <a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Show notifications"><i class="fa fa-bell-o fa-lg"></i></a>
+              <ul class="app-notification dropdown-menu dropdown-menu-right">
+                <li class="app-notification__title">You have 4 new notifications.</li>
+                <div class="app-notification__content">
+                  <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></span>
+                      <div>
+                        <p class="app-notification__message">Lisa sent you a mail</p>
+                        <p class="app-notification__meta">2 min ago</p>
+                      </div></a></li>
+                  <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-danger"></i><i class="fa fa-hdd-o fa-stack-1x fa-inverse"></i></span></span>
+                      <div>
+                        <p class="app-notification__message">Mail server not working</p>
+                        <p class="app-notification__meta">5 min ago</p>
+                      </div></a></li>
+                  <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-success"></i><i class="fa fa-money fa-stack-1x fa-inverse"></i></span></span>
+                      <div>
+                        <p class="app-notification__message">Transaction complete</p>
+                        <p class="app-notification__meta">2 days ago</p>
+                      </div></a></li>
+                  <div class="app-notification__content">
+                    <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></span>
+                        <div>
+                          <p class="app-notification__message">Lisa sent you a mail</p>
+                          <p class="app-notification__meta">2 min ago</p>
+                        </div></a></li>
+                    <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-danger"></i><i class="fa fa-hdd-o fa-stack-1x fa-inverse"></i></span></span>
+                        <div>
+                          <p class="app-notification__message">Mail server not working</p>
+                          <p class="app-notification__meta">5 min ago</p>
+                        </div></a></li>
+                    <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-success"></i><i class="fa fa-money fa-stack-1x fa-inverse"></i></span></span>
+                        <div>
+                          <p class="app-notification__message">Transaction complete</p>
+                          <p class="app-notification__meta">2 days ago</p>
+                        </div></a></li>
+                  </div>
                 </div>
-            </nav>
+                <li class="app-notification__footer"><a href="#">See all notifications.</a></li>
+              </ul>
+            </li>
+            <!-- User Menu-->
+            <a class="app-nav__item" href="/logout" aria-label="Logout">
+                <i class="fa fa-sign-out fa-lg"></i>
+              </a>
+          </ul>
+        </header>
 
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-                <%- body %>
-            </main>
-        </div>
-    </div>
+        <!-- SIDEBAR -->
+        <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+        <aside class="app-sidebar">
+          <ul class="app-menu">
+            <li>
+              <a class="app-menu__item" href="/dashboard">
+                <i class="app-menu__icon fa fa-dashboard"></i>
+                  <span class="app-menu__label">Dashboard</span>
+                </a>
+              </li>
+              <li>
+                  <a class="app-menu__item" href="/movies">
+                    <i class="app-menu__icon fa fa-film"></i>
+                    <span class="app-menu__label">Movies</span>
+                  </a>
+              </li>
+              <li>
+                  <a class="app-menu__item" href="/series">
+                    <i class="app-menu__icon fa fa-tv"></i>
+                    <span class="app-menu__label">Series</span>
+                  </a>
+              </li>
+            <li class="treeview is-expanded">
+              <a class="app-menu__item" href="#" data-toggle="treeview">
+                <i class="app-menu__icon fa fa-cog"></i>
+                <span class="app-menu__label">Settings</span>
+                <i class="treeview-indicator fa fa-angle-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a class="treeview-item active" href="#"><i class="icon fa fa-circle-o"></i> General</a></li>
+              </ul>
+            </li>
+          </ul>
+        </aside>
 
+        <main class="app-content">
+            <%- body %>
+        </main>
+
+    <% /*
+      Client-side JavaScript
+      ========================
+
+      Scripts can be hard-coded as «script» tags, automatically injected
+      by the asset pipeline between "SCRIPTS" and "SCRIPTS END", or both.
+      (https://sailsjs.com/docs/concepts/assets/task-automation)
+    */ %>
+
+    <% /* Delete the global `self` to help avoid client-side bugs.
+    (see https://developer.mozilla.org/en-US/docs/Web/API/Window/self) */ %>
+    <script>delete window.self;</script>
+
+    <% /* Auto-injected «script» tags: */ %>
     <!--SCRIPTS-->
     <script src="/dependencies/sails.io.js"></script>
-    <script src="/dependencies/js/bootstrap.min.js"></script>
-    <script src="/dependencies/js/popper.min.js"></script>
+    <script src="/dependencies/lodash.js"></script>
+    <script src="/dependencies/jquery.min.js"></script>
+    <script src="/dependencies/bootstrap.bundle.js"></script>
+    <script src="/dependencies/bowser.js"></script>
+    <script src="/dependencies/vue.js"></script>
+    <script src="/dependencies/cloud.js"></script>
+    <script src="/dependencies/parasails.js"></script>
+    <script src="/js/cloud.setup.js"></script>
+    <script src="/js/components/ajax-button.component.js"></script>
+    <script src="/js/components/ajax-form.component.js"></script>
+    <script src="/js/components/modal.component.js"></script>
+    <script src="/js/utilities/open-stripe-checkout.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/pages/498.page.js"></script>
+    <script src="/js/pages/account/account-overview.page.js"></script>
+    <script src="/js/pages/account/edit-password.page.js"></script>
+    <script src="/js/pages/account/edit-profile.page.js"></script>
+    <script src="/js/pages/dashboard.page.js"></script>
+    <script src="/js/pages/homepage.page.js"></script>
+    <script src="/js/pages/user/login.page.js"></script>
     <!--SCRIPTS END-->
-</body>
-
+  </body>
 </html>
