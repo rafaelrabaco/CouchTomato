@@ -14,8 +14,12 @@ module.exports.routes = {
   //  ╦ ╦╔═╗╔╗ ╔═╗╔═╗╔═╗╔═╗╔═╗
   //  ║║║║╣ ╠╩╗╠═╝╠═╣║ ╦║╣ ╚═╗
   //  ╚╩╝╚═╝╚═╝╩  ╩ ╩╚═╝╚═╝╚═╝
-  'GET /':                   { action: 'index', locals: {layout: 'layouts/layout-login'} },
-  'GET /dashboard':            { action: 'dashboard' },
+  'GET /': { action: 'index', locals: { layout: 'layouts/layout-login' } },
+  'GET /dashboard': { action: 'dashboard' },
+  'GET /settings/general': { action: 'settings/general/index' },
+  'GET /settings/profiles': { action: 'settings/profiles/index' },
+  'GET /settings/quality': { action: 'settings/quality/index' },
+
 
 
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
@@ -23,8 +27,10 @@ module.exports.routes = {
   //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝
   // Note that, in this app, these API endpoints may be accessed using the `Cloud.*()` methods
   // from the CloudSDK library.
-  'GET /api/logout':                       { action: 'user/logout' },
-  'PUT /api/login':                        { action: 'user/login' },
+  'GET /api/logout': { action: 'logout' },
+  'PUT /api/login': { action: 'login' },
+  'PUT /api/settings/general': { action: 'settings/general/update' },
+  'GET /api/settings/quality': { action: 'settings/quality/index' },
 
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
@@ -35,6 +41,6 @@ module.exports.routes = {
   //  ╔╦╗╦╔═╗╔═╗  ╦═╗╔═╗╔╦╗╦╦═╗╔═╗╔═╗╔╦╗╔═╗
   //  ║║║║╚═╗║    ╠╦╝║╣  ║║║╠╦╝║╣ ║   ║ ╚═╗
   //  ╩ ╩╩╚═╝╚═╝  ╩╚═╚═╝═╩╝╩╩╚═╚═╝╚═╝ ╩ ╚═╝
-  '/logout':                  '/api/logout',
+  '/logout': '/api/logout',
 
 };

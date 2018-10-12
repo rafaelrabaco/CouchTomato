@@ -23,8 +23,17 @@
         <!-- <p class="semibold-text mb-2"><a href="#" data-toggle="flip">Forgot Password ?</a></p> -->
       </div>
     </div>
+    <div class="form-group">
+        <div class="alert alert-dismissible alert-danger" v-if="cloudError==='badCombo'">
+            The username and password combination does notmatch.
+        </div>
+        <div class="alert alert-dismissible alert-danger" v-else-if="cloudError">
+            An error occured while processing your request.<br>
+            Please check your information and try again
+        </div>
+    </div>
     <div class="form-group btn-container">
-      <button class="btn btn-primary btn-block"><i class="fa fa-sign-in fa-lg fa-fw"></i>SIGN IN</button>
+        <ajax-button :syncing="syncing" class="btn-primary btn-lg btn-block">Sign in</ajax-button>
     </div>
   </ajax-form>
 </div>

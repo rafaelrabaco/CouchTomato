@@ -1,0 +1,24 @@
+<% if (req.session.flash) { %>
+
+    <% if (req.session.flash.success) { %>
+        <span id="flash-message" style="display:none";> <%= req.flash('success') %> </span>
+        <script type="text/javascript">
+            showNotification('bg-green', jQuery("#flash-message").text(), 'top', 'right', 'animated bounceInRight', 'animated bounceOutRight')
+        </script>
+    <% } %>
+
+    <% if (req.session.flash.warning) { %>
+        <span id="flash-message" style="display:none";> <%= req.flash('warning') %> </span>
+        <script type="text/javascript">
+            showNotification('bg-yellow', jQuery("#flash-message").text(), 'top', 'right', 'animated bounceInRight', 'animated bounceOutRight')
+        </script>
+    <% } %>
+
+    <% if (req.session.flash.error) { %>
+        <span id="flash-message" style="display:none";> <%= req.flash('error') %> </span>
+        <script type="text/javascript">
+            showNotification('bg-red', jQuery("#flash-message").text(), 'top', 'right', 'animated bounceInRight', 'animated bounceOutRight')
+        </script>
+    <% } %>
+
+<% } %>

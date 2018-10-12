@@ -8,6 +8,7 @@
 
   <% /* Auto-injected «link» tags: */ %>
   <!--STYLES-->
+  <link rel="stylesheet" href="/dependencies/animate/animate.css">
   <link rel="stylesheet" href="/dependencies/font-awesome-4/css/font-awesome.css">
   <link rel="stylesheet" href="/styles/less.css">
   <link rel="stylesheet" href="/styles/scss.css">
@@ -34,6 +35,9 @@
     <script src="/dependencies/bootstrap.bundle.js"></script>
     <script src="/dependencies/bowser.js"></script>
     <script src="/dependencies/vue.js"></script>
+    <script src="/dependencies/bootstrap-notify.min.js"></script>
+    <script src="/dependencies/dataTables/jquery.dataTables.min.js"></script>
+    <script src="/dependencies/dataTables/dataTables.bootstrap.min.js"></script>
     <script src="/dependencies/cloud.js"></script>
     <script src="/dependencies/parasails.js"></script>
     <script src="/js/cloud.setup.js"></script>
@@ -45,10 +49,13 @@
     <script src="/js/pages/498.page.js"></script>
     <script src="/js/pages/account/account-overview.page.js"></script>
     <script src="/js/pages/account/edit-password.page.js"></script>
-    <script src="/js/pages/account/edit-profile.page.js"></script>
     <script src="/js/pages/dashboard.page.js"></script>
     <script src="/js/pages/homepage.page.js"></script>
+    <script src="/js/pages/settings/general.page.js"></script>
+    <script src="/js/pages/settings/profiles.page.js"></script>
     <script src="/js/pages/user/login.page.js"></script>
     <!--SCRIPTS END-->
+
+    <%- include ../components/flash.ejs %>
   </body>
 </head>

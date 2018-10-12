@@ -51,9 +51,11 @@ module.exports = {
       username: inputs.username,
     });
 
-    if(!userRecord) 
+
+    if(!userRecord) {
       throw 'badCombo';
-    
+    }
+
     await sails.helpers.passwords.checkPassword(inputs.password, userRecord.password).intercept('incorrect', 'badCombo');
 
     if (inputs.rememberMe) {

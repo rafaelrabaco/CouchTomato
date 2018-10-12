@@ -72,6 +72,9 @@ var jsFilesToInject = [
   'dependencies/bootstrap.bundle.js',
   'dependencies/bowser.js',
   'dependencies/vue.js',
+  'dependencies/bootstrap-notify.min.js',
+  'dependencies/dataTables/jquery.dataTables.min.js',
+  'dependencies/dataTables/dataTables.bootstrap.min.js',
   'dependencies/js/main.js',
   'dependencies/**/*.js',
 
@@ -137,21 +140,21 @@ var tmpPath = '.tmp/public/';
 // Prefix relative paths to source files so they point to the proper locations
 // (i.e. where the other Grunt tasks spit them out, or in some cases, where
 // they reside in the first place)
-module.exports.cssFilesToInject = cssFilesToInject.map((cssPath)=>{
+module.exports.cssFilesToInject = cssFilesToInject.map((cssPath) => {
   // If we're ignoring the file, make sure the ! is at the beginning of the path
   if (cssPath[0] === '!') {
     return require('path').join('!' + tmpPath, cssPath.substr(1));
   }
   return require('path').join(tmpPath, cssPath);
 });
-module.exports.jsFilesToInject = jsFilesToInject.map((jsPath)=>{
+module.exports.jsFilesToInject = jsFilesToInject.map((jsPath) => {
   // If we're ignoring the file, make sure the ! is at the beginning of the path
   if (jsPath[0] === '!') {
     return require('path').join('!' + tmpPath, jsPath.substr(1));
   }
   return require('path').join(tmpPath, jsPath);
 });
-module.exports.templateFilesToInject = templateFilesToInject.map((tplPath)=>{
+module.exports.templateFilesToInject = templateFilesToInject.map((tplPath) => {
   // If we're ignoring the file, make sure the ! is at the beginning of the path
   if (tplPath[0] === '!') {
     return require('path').join('!assets/', tplPath.substr(1));

@@ -1,0 +1,34 @@
+<div id="general" v-cloak>
+    <ajax-form action="general" :syncing.sync="syncing" :cloud-error.sync="cloudError" @submitted="submittedForm()"
+        :handle-parsing="handleParsingForm">
+        <div class="app-title">
+            <div>
+                <h1><i class="fa fa-cog"></i> General Settings</h1>
+            </div>
+            <ul class="app-breadcrumb breadcrumb">
+                <ajax-button type="submit" :syncing="syncing" class="btn btn-dark">Save</ajax-button>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="tile">
+                    <h3 class="tile-title">Security</h3>
+                    <div class="form-group">
+                        <label for="real-username">Username</label>
+                        <input class="form-control" id="real-username" name="real-username" type="text" :class="[formErrors.username ? 'is-invalid' : '']"
+                            v-model.trim="formData.username" placeholder="" autocomplete="nope" focus-first>
+                        <div class="invalid-feedback" v-if="formErrors.username">Please enter a username.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="real-password">Password</label>
+                        <input class="form-control" id="real-password" name="real-password" type="password" :class="[formErrors.password ? 'is-invalid' : '']"
+                            v-model.trim="formData.password" placeholder="••••••••" autocomplete="new-password">
+                        <div class="invalid-feedback" v-if="formErrors.password">Please enter a password.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+</ajax-form>
+</div>
+<%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>
